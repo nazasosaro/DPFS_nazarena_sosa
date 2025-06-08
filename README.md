@@ -29,9 +29,9 @@ A continuación, incluyo seis sitios web que me inspiraron para el diseño y est
 
 ¿Por qué elegí estos sitios webs?
 Elegí estos sitios porque presentan un diseño visualmente atractivo con el uso de:
-•	Colores vivos y colores pasteles, que transmiten alegría, ternura y cercanía.
-•	Tipografías divertidas y amigables, ideales para una tienda que busca conectar emocionalmente con su audiencia.
-•	Elementos gráficos suaves y redondeados, que generan una experiencia más cálida y accesible.
+-	Colores vivos y colores pasteles, que transmiten alegría, ternura y cercanía.
+-	Tipografías divertidas y amigables, ideales para una tienda que busca conectar emocionalmente con su audiencia.
+-	Elementos gráficos suaves y redondeados, que generan una experiencia más cálida y accesible.
 
 ## 📖 Organización de tareas
 Para la organización de las tareas que conciernen a cada sprint, decidí utilizar Trello. En el siguiente link se encuentra en el Tablero MOR Ecommerce [https://trello.com/b/6GXkDj3E/mor-ecommerce]
