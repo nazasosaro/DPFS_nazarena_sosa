@@ -2,9 +2,81 @@
 <%- include('partials/header') %>
 
 <main>
-  <h1>Bienvenido a la tienda</h1>
-  <p>Explora nuestro catálogo de productos.</p>
-  <a href="/products/catalog">Ir al catálogo</a>
+
+  <section class="hero-section">
+    <div class="container-fluid">
+      <div class="hero-wrapper">
+        <picture>
+          <source media="(min-width: 768px)" srcset="assets_front/images/banner.jpg">
+          <img class="hero-img" src="assets_front/images/banner-mb.png" alt="banner de bienvenida con peluches de fondo">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories-section padding-section">
+    <div class="container-fluid">
+      <h2 class="title-section">Categorías destacadas</h2>
+
+      <div class="categories-grid">
+        <% categories.forEach(cat => { %>
+        <article class="category-card">
+          <a href="<%= cat.url %>">
+            <img src="<%= cat.image %>" alt="Categoría <%= cat.name %>">
+            <div class="category-card-info">
+              <h3>
+                <span><%= cat.name %></span>
+                <span class="category-btn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8L22 12L18 16" />
+                    <path d="M2 12H22" />
+                  </svg>
+                </span>
+              </h3>
+            </div>
+          </a>
+        </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer-section padding-section">
+    <div class="container-fluid">
+      <h2 class="title-section">Ofertas especiales</h2>
+
+      <div class="offer-grid">
+        <% offers.forEach(product => { %>
+        <article class="offer-card">
+          <a href="/products/details">
+            <img src="<%= product.image %>" alt="<%= product.name %>" class="offer-image">
+          </a>
+
+          <div class="offer-info">
+            <a href="/products/details">
+              <h3 class="offer-name"><%= product.name %></h3>
+            </a>
+            <div class="offer-prices">
+              <span class="offer-price-new">Gs. <%= product.newPrice.toLocaleString() %></span>
+              <span class="offer-price-old">Gs. <%= product.oldPrice.toLocaleString() %></span>
+            </div>
+            <button class="offer-btn">Agregar al carrito</button>
+          </div>
+        </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="divider-banner padding-section">
+    <div class="container-fluid">
+      <picture>
+        <source media="(min-width: 768px)" srcset="assets_front/images/banner-divider.jpg">
+        <img class="divider-banner-img" src="assets_front/images/banner-divider-mb.jpg" alt="banner de division">
+      </picture>
+    </div>
+  </section>
+
 </main>
 
 <%- include('partials/footer') %>

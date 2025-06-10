@@ -1,12 +1,31 @@
-<header>
-  <nav>
-    <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/products/catalog">Catálogo</a></li>
-      <li><a href="/products/cart">Carrito</a></li>
-      <li><a href="/users/login">Login</a></li>
-      <li><a href="/users/register">Registrarse</a></li>
-    </ul>
-  </nav>
+<header class="main-header">
+  <div class="container-fluid">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="header-logo">
+        <a href="/"><img src="/assets_front/images/logo-mor.svg" alt="MOR logo"></a>
+      </div>
+
+      <!-- Botón de menú hamburguesa (visible en mobile) -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        Menu
+      </button>
+
+      <!-- Links de navegación -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Nosotros</a></li>
+          <li><a href="/products/catalog">Catálogo</a></li>
+          <li><a href="/products/catalog">Ofertas</a></li>
+        </ul>
+      </nav>
+
+      <!-- Íconos de usuario y carrito -->
+      <div class="header-actions">
+        <a href="/users/login" aria-label="Usuario">Iniciar sesion</a>
+        <a href="/users/register" aria-label="Usuario">Registrarse</a>
+        <a href="/products/cart" aria-label="Carrito">Carrito (0)</a>
+      </div>
+    </div>
+  </div>
 </header>
-  
