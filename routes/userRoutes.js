@@ -11,4 +11,6 @@ router.post("/register", userController.registerProcess);
 router.get("/forgot-password", userController.forgotPasswordForm);
 router.post("/forgot-password", userController.forgotPasswordProcess);
 
+router.get("/account", userController.account);
+
 module.exports = router;

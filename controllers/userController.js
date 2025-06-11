@@ -22,7 +22,11 @@ module.exports = {
   },
 
   forgotPasswordProcess: (req, res) => {
-    // Aquí iría la lógica de registro
+    // Aquí iría la lógica de reestablecer contraseña
     res.send("Procesando reestablecer contraseña...");
+  },
+
+  account: (req, res) => {
+    res.render("users/account", { title: "Mi Cuenta" });
   },
 };

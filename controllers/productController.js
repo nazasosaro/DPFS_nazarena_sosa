@@ -10,4 +10,12 @@ module.exports = {
   cart: (req, res) => {
     res.render("products/productCart", { title: "Carrito" });
   },
+
+  create: (req, res) => {
+    res.render("products/createProduct", { title: "Cargar Producto" });
+  },
+
+  edit: (req, res) => {
+    res.render("products/editProduct", { title: "Editar Producto" });
+  },
 };

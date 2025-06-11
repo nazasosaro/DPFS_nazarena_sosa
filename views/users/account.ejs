@@ -1,0 +1,83 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="account-container container py-4">
+  <h1 class="mb-4 text-center">Mi cuenta</h1>
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs account-tabs mb-4" id="accountTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="config-tab" data-bs-toggle="tab" data-bs-target="#config" type="button" role="tab">Configuración cuenta</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab">Pedidos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="address-tab" data-bs-toggle="tab" data-bs-target="#address" type="button" role="tab">Dirección</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab">Método de Pago</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="logout-tab" data-bs-toggle="tab" data-bs-target="#logout" type="button" role="tab">Cerrar Sesión</button>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="accountTabContent">
+    <!-- Configuración -->
+    <div class="tab-pane fade show active" id="config" role="tabpanel">
+      <div class="account-box">
+        <p><strong>Nombre:</strong> Sofía Ramírez</p>
+        <p><strong>Email:</strong> sofia.ramirez@example.com</p>
+        <p><strong>Teléfono:</strong> +595 981 234 567</p>
+        <button class="btn btn-account">Editar perfil</button>
+      </div>
+    </div>
+
+    <!-- Pedidos -->
+    <div class="tab-pane fade" id="orders" role="tabpanel">
+      <div class="account-box">
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <strong>Pedido #10023</strong><br>
+            25 mayo 2025 - Total: Gs. 180.000
+          </li>
+          <li>
+            <strong>Pedido #10018</strong><br>
+            10 mayo 2025 - Total: Gs. 220.000
+          </li>
+        </ul>
+        <a href="#" class="link-account">Ver historial completo</a>
+      </div>
+    </div>
+
+    <!-- Dirección -->
+    <div class="tab-pane fade" id="address" role="tabpanel">
+      <div class="account-box">
+        <p>Avenida Mcal. López 456</p>
+        <p>Barrio Villa Morra, Asunción</p>
+        <p>Paraguay</p>
+        <button class="btn btn-account">Editar dirección</button>
+      </div>
+    </div>
+
+    <!-- Método de Pago -->
+    <div class="tab-pane fade" id="payment" role="tabpanel">
+      <div class="account-box">
+        <p><strong>Tarjeta:</strong> **** **** **** 1234</p>
+        <p>Válida hasta 10/26</p>
+        <button class="btn btn-account">Actualizar tarjeta</button>
+      </div>
+    </div>
+
+    <!-- Cerrar Sesión -->
+    <div class="tab-pane fade" id="logout" role="tabpanel">
+      <div class="text-center mt-4">
+        <button class="btn btn-logout">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

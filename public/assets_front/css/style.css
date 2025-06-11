@@ -162,16 +162,16 @@ a {
    Secciones y layout
 ================================= */
 .container-fluid {
-    --bs-gutter-x: 1rem;
+  --bs-gutter-x: 1rem;
 }
 .padding-section {
   padding: 3rem 1rem;
 }
 .title-section {
-    font-size: var(--font-size-xxl);
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--color-primary-dark);
+  font-size: var(--font-size-xxl);
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary-dark);
 }
 
 /* ===== INICIO HEADER ===== */
@@ -268,10 +268,10 @@ a {
 
 /* ===== DESKTOP: desde 992px ===== */
 @media (min-width: 992px) {
-    /*= general =*/
-    .container-fluid {
-        --bs-gutter-x: 3.5rem;
-    }
+  /*= general =*/
+  .container-fluid {
+    --bs-gutter-x: 3.5rem;
+  }
 
   /*= inicio header =*/
   .header-container {
@@ -459,7 +459,7 @@ a {
 
 /* ===== FIN INDEX ===== */
 
-/* ===== INICIO LOGIN ===== */
+/* ===== INICIO LOGIN, REGISTER, FORGOT PASSWORD ===== */
 
 .login-container {
   width: 100%;
@@ -551,7 +551,85 @@ a {
   text-decoration: underline;
 }
 
-/* ===== FIN LOGIN ===== */
+/* ===== FIN LOGIN, REGISTER, FORGOT PASSWORD ===== */
+
+/* ===== INICIO ACCOUNT ===== */
+
+.account-container {
+  font-family: var(--font-primary);
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.account-tabs .nav-link {
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+.account-tabs .nav-link.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.account-box {
+  background-color: var(--color-white);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.btn-account {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.btn-logout {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: var(--font-size-base);
+}
+
+.link-account {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-sm);
+  text-decoration: underline;
+}
+
+/* ===== FIN ACCOUNT ===== */
+
+/* ===== INICIO CREAR, EDITAR PRODUCTO ===== */
+
+form input, form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-family: var(--font-primary);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--radius-sm);
+}
+form button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* ===== FIN CREAR, EDITAR PRODUCTO ===== */
 
 /* ===== INICIO FOOTER ===== */
 
@@ -611,8 +689,6 @@ a {
   transform: scale(1.1);
 }
 /* ===== FIN FOOTER ===== */
-
-
 
 /* Desktop layout */
 @media (min-width: 768px) {
