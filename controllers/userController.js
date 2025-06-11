@@ -7,6 +7,10 @@ module.exports = {
     res.render("users/register", { title: "Registro" });
   },
 
+  forgotPasswordForm: (req, res) => {
+    res.render("users/forgotPasssword", { title: "Reestablecer contraseña" });
+  },
+
   loginProcess: (req, res) => {
     // Aquí iría la lógica de login
     res.send("Procesando login...");
@@ -15,5 +19,10 @@ module.exports = {
   registerProcess: (req, res) => {
     // Aquí iría la lógica de registro
     res.send("Procesando registro...");
+  },
+
+  forgotPasswordProcess: (req, res) => {
+    // Aquí iría la lógica de registro
+    res.send("Procesando reestablecer contraseña...");
   },
 };
