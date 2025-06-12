@@ -1,9 +1,63 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<main>
-  <h1>Carrito de Compras</h1>
-  <p>Tu carrito está vacío.</p>
+<main class="container-fluid">
+  <h1 class="cart-title">Carrito de compras</h1>
+
+  <!-- Ítem 1 -->
+  <div class="cart-item">
+    <div class="cart-item-header">
+      <button class="cart-remove" aria-label="Eliminar producto">×</button>
+      <img src="/assets_front/images/products/producto1.jpg" alt="Unicornio" class="cart-item-image" />
+    </div>
+    <div class="cart-item-body">
+      <div class="cart-item-details">
+        <h2 class="cart-item-name">Unicornio</h2>
+        <p class="cart-item-price">Gs. 163.000</p>
+      </div>
+      <div class="cart-item-qty-subtotal">
+        <div class="cart-item-qty">
+          <button class="qty-btn">+</button>
+          <input type="number" value="2" min="1" readonly />
+          <button class="qty-btn">−</button>
+        </div>
+        <p class="cart-subtotal">Gs. 326.000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ítem 2 -->
+  <div class="cart-item">
+    <div class="cart-item-header">
+      <button class="cart-remove" aria-label="Eliminar producto">×</button>
+      <img src="/assets_front/images/products/producto3.jpg" alt="Muneica" class="cart-item-image" />
+    </div>
+    <div class="cart-item-body">
+      <div class="cart-item-details">
+        <h2 class="cart-item-name">Muneica<span class="cart-size">S</span></h2>
+        <p class="cart-item-price">Gs. 365.000</p>
+      </div>
+      <div class="cart-item-qty-subtotal">
+        <div class="cart-item-qty">
+          <button class="qty-btn">+</button>
+          <input type="number" value="1" min="1" readonly />
+          <button class="qty-btn">−</button>
+        </div>
+        <p class="cart-subtotal">Gs. 365.000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total y acciones -->
+  <div class="cart-footer">
+    <div class="cart-total">
+      <p><strong>Subtotal</strong> Gs. 691.000</p>
+    </div>
+    <div class="cart-actions">
+      <a class="cart-btn cart-update" href="/">Seguir Compando</a>
+      <button class="cart-btn cart-checkout">Finalizar compra</button>
+    </div>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

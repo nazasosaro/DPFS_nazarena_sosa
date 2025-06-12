@@ -1,14 +1,65 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<main>
-  <h1>Catálogo de Productos</h1>
-  <ul>
-    <li>Producto 1</li>
-    <li>Producto 2</li>
-    <li>Producto 3</li>
-    <!-- Aquí iría un bucle para mostrar productos dinámicamente -->
-  </ul>
+<main class="container-fluid">
+  <section class="catalog-container">
+    <!-- Aside de categorías -->
+    <aside class="catalog-sidebar">
+      <h2 class="sidebar-title">Categorías</h2>
+      <ul class="sidebar-list">
+        <li><a href="#">Peluches</a></li>
+        <li><a href="#">Juguetes</a></li>
+        <li><a href="#">Muñecas</a></li>
+        <li><a href="#">Personajes</a></li>
+      </ul>
+    </aside>
+
+    <!-- Grilla de productos -->
+    <article class="catalog-products">
+      <!-- Card de producto -->
+      <div class="product-card">
+        <a href="/products/details">
+          <img src="/assets_front/images/products/producto1.jpg" alt="Peluche panda" />
+        </a>
+        <div class="product-info">
+          <a href="/products/details">
+            <h3 class="product-name">Peluche Panda</h3>
+          </a>
+          <p class="product-price">Gs. 120.000</p>
+          <button class="product-button">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <a href="/products/details">
+          <img src="/assets_front/images/products/producto2.jpg" alt="Auto de juguete" />
+        </a>
+        <div class="product-info">
+          <a href="/products/details">
+            <h3 class="product-name">Auto de Juguete</h3>
+          </a>
+          <p class="product-price">Gs. 95.000</p>
+          <button class="product-button">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <a href="/products/details">
+          <img src="/assets_front/images/products/producto3.jpg" alt="Muñeca clásica" />
+        </a>
+        <div class="product-info">
+          <a href="/products/details">
+            <h3 class="product-name">Muñeca Clásica</h3>
+          </a>
+          <p class="product-price">Gs. 145.000</p>
+          <button class="product-button">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <!-- Agrega más productos según necesidad -->
+    </article>
+  </section>
 </main>
+
 
 <%- include('../partials/footer') %>

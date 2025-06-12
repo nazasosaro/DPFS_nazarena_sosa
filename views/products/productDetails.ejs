@@ -1,11 +1,60 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<main>
-  <h1>Detalle del Producto</h1>
-  <p>Nombre: Producto ejemplo</p>
-  <p>Descripción: Este es un producto de ejemplo.</p>
-  <p>Precio: $00.00</p>
+<main class="product-detail">
+  <div class="container-fluid">
+    <div class="product-detail-wrapper">
+      <!-- Imagen del producto -->
+      <div class="product-image">
+        <img src="/assets_front/images/products/producto1.jpg" alt="Nombre del producto">
+      </div>
+
+      <!-- Información del producto -->
+      <div class="product-info">
+        <span class="product-category">Peluches</span>
+        <h1 class="product-name">Peluche unicornio arcoíris</h1>
+        <p class="product-code">Código: 123456</p>
+        <p class="product-description">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque eos ratione quos blanditiis at, porro accusamus velit ipsa quod dolore repudiandae tempora, consectetur temporibus iste laborum illum pariatur sit reiciendis.
+        </p>
+
+        <div class="product-pricing">
+          <span class="product-price-offer">Gs. 85.000</span>
+          <span class="product-price-old">Gs. 120.000</span>
+        </div>
+
+        <div class="color-options">
+          <p>Colores disponibles:</p>
+
+          <input type="radio" id="color-marron" name="color" value="marron" hidden />
+          <label for="color-marron" class="color-option">
+            <span class="color-label" style="background-color: #8B4513;"></span> Marrón
+          </label>
+
+          <input type="radio" id="color-beige" name="color" value="beige" hidden />
+          <label for="color-beige" class="color-option">
+            <span class="color-label" style="background-color: #F5F5DC;"></span> Beige
+          </label>
+
+          <input type="radio" id="color-blanco" name="color" value="blanco" hidden />
+          <label for="color-blanco" class="color-option">
+            <span class="color-label" style="background-color: #FFFFFF; border: 1px solid #ccc;"></span> Blanco
+          </label>
+        </div>
+
+        <div class="product-quantity">
+          <label for="quantity">Cantidad:</label>
+          <input type="number" id="quantity" name="quantity" value="1" min="1">
+        </div>
+
+        <div class="product-actions">
+          <button class="btn-add-cart">Agregar al carrito</button>
+          <a href="https://wa.me/595991123456" target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
+
 
 <%- include('../partials/footer') %>
