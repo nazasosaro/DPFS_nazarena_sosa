@@ -881,17 +881,6 @@ input[type="radio"]:checked + label {
   font-size: var(--font-size-md);
   cursor: pointer;
 }
-
-input[type="number"] {
-  width: 50px;
-  text-align: center;
-  border: none;
-  font-size: var(--font-size-base);
-  background-color: var(--color-light-gray);
-  border-radius: var(--radius-sm);
-  padding: 0.25rem;
-}
-
 .cart-subtotal {
   font-weight: bold;
   font-size: var(--font-size-base);

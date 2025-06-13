@@ -43,22 +43,25 @@
         </div>
       </div>
 
+      <!-- card dinamica con BD JSON -->
+      <% products.forEach(product => { %>
       <div class="product-card">
-        <a href="/products/details">
-          <img src="/assets_front/images/products/producto3.jpg" alt="Muñeca clásica" />
+        <a href="/products/details/<%= product.id %>">
+          <img src="<%= product.image %>" alt="Peluche panda" />
         </a>
         <div class="product-info">
-          <a href="/products/details">
-            <h3 class="product-name">Muñeca Clásica</h3>
+          <a href="/products/details/<%= product.id %>">
+            <h3 class="product-name"><%= product.name %></h3>
           </a>
-          <p class="product-price">Gs. 145.000</p>
+          <p class="product-price">Gs. <%= product.price %></p>
           <button class="product-button">Agregar al carrito</button>
         </div>
       </div>
+      <% }) %>
 
-      <!-- Agrega más productos según necesidad -->
     </article>
   </section>
+
 </main>
 
 

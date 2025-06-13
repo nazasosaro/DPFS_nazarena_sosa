@@ -5,15 +5,17 @@
 
     <section class="container">
         <h1>Crear nuevo producto</h1>
-        <form action="/products/create" method="POST" enctype="multipart/form-data">
+        <form action="/products" method="POST">
           <input type="text" name="name" placeholder="Nombre del producto" required />
           <textarea name="description" placeholder="Descripción" required></textarea>
-          <input type="file" name="image" required />
+          <input type="text" name="image" placeholder="URL de imagen" />
           <input type="text" name="category" placeholder="Categoría" required />
           <input type="text" name="colors" placeholder="Colores disponibles" />
           <input type="number" step="0.01" name="price" placeholder="Precio" required />
+          <input type="number" name="promotionalPrice" placeholder="Precio promocional" />
+          <input type="number" name="stock" placeholder="Stock disponible" required />
           <button type="submit">Crear producto</button>
-        </form>
+        </form>        
     </section>
 
 </main>
