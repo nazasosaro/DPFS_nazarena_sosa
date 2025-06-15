@@ -94,10 +94,11 @@ module.exports = {
   },
 
   forgotPasswordProcess: (req, res) => {
-    // Aquí iría la lógica de reestablecer contraseña
+    // TODO: lógica de reestablecer contraseña
     res.send("Procesando reestablecer contraseña...");
   },
 
+  // mostrar vista de cuenta de usuario
   account: (req, res) => {
     const user = req.session.userLogin;
     res.render("users/account", {

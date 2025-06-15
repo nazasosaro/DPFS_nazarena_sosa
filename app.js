@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(rememberMiddleware);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
 
@@ -32,7 +32,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
   })
-);
+);git 
+
 // mostrar usuario logueado en todas las vistas
 app.use((req, res, next) => {
   res.locals.userLogged = req.session.userLogin || null;
