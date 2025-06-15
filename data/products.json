@@ -2,26 +2,26 @@
   {
     "id": 1,
     "name": "Pato Sarnoso",
-    "description": "Middleware is software that lies between an operating system and the applications running on it. ",
+    "description": "Middleware is software that lies between an operating system and the applications running on it.",
     "image": "/uploads/products/1749944486423-301022206.png",
     "category": "Middleware",
     "colors": "rojo",
     "price": 120000,
     "promotional_price": 70000,
     "stock": 9,
-    "status": "active"
+    "status": "deleted"
   },
   {
     "id": 2,
-    "name": "curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien",
-    "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+    "name": "Prdouct",
+    "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\r\n\r\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
     "image": "http://dummyimage.com/210x100.png/5fa2dd/ffffff",
     "category": "Juguetes",
     "colors": "rosado",
     "price": 244801,
     "promotional_price": 195840.8,
     "stock": 96,
-    "status": "deleted"
+    "status": "active"
   },
   {
     "id": 3,
@@ -61,7 +61,7 @@
   },
   {
     "id": 6,
-    "name": "eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum",
+    "name": "zozoroo",
     "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
     "image": "http://dummyimage.com/204x100.png/dddddd/000000",
     "category": "Personajes",

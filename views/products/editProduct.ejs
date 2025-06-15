@@ -16,6 +16,12 @@
       <input type="number" step="0.01" name="price" value="<%= product.price %>" required placeholder="Editar precio" />
       <input type="number" step="0.01" name="promotionalPrice" value="<%= product.promotional_price %>" required placeholder="Editar precio promocional" />
       <input type="number" name="stock" value="<%= product.stock %>" required placeholder="Editar stock" />
+      <label for="status">Estado del producto</label>
+      <select name="status" id="status">
+        <option value="active" <%= product.status === "active" ? "selected" : "" %>>Activo</option>
+        <option value="inactive" <%= product.status === "inactive" ? "selected" : "" %>>Inactivo</option>
+        <option value="deleted" <%= product.status === "deleted" ? "selected" : "" %>>Eliminado</option>
+      </select>
       <button type="submit">Actualizar producto</button>
     </form>
   </section>

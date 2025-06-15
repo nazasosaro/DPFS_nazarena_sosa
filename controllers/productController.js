@@ -6,7 +6,13 @@ module.exports = {
   // listar todos los productos
   products: async (req, res) => {
     const products = await loadProducts();
-    res.render("products/productCatalog", { title: "Catálogo", products });
+    const activeProducts = products.filter(
+      (p) => p.status?.trim().toLowerCase() === "active"
+    );
+    res.render("products/productCatalog", {
+      title: "Catálogo",
+      products: activeProducts,
+    });
   },
 
   // mostrar el detalle de un producto por ID
@@ -62,11 +68,15 @@ module.exports = {
 
   // actualizar producto (PUT)
   update: async (req, res) => {
+    console.log(req.body);
     const products = await loadProducts();
     const index = products.findIndex(
       (p) => String(p.id) === String(req.params.id)
     );
     if (index === -1) return res.status(404).send("Producto no encontrado");
+
+    const allowedStatuses = ["active", "inactive", "deleted"];
+    const newStatus = req.body.status?.trim().toLowerCase();
 
     products[index] = {
       ...products[index],
@@ -84,9 +94,22 @@ module.exports = {
         ? parseFloat(req.body.promotionalPrice)
         : products[index].promotional_price,
       stock: req.body.stock ? parseInt(req.body.stock) : products[index].stock,
+      status: allowedStatuses.includes(newStatus)
+        ? newStatus
+        : products[index].status,
     };
     
+    await saveProducts(products);
+    res.redirect("/products");
+  },
 
+  // eliminar producto
+  destroy: async (req, res) => {
+    const products = await loadProducts();
+    const index = products.findIndex((p) => p.id === req.params.id);
+    if (index === -1) return res.status(404).send("Producto no encontrado");
+
+    products[index].status = "deleted";
     await saveProducts(products);
     res.redirect("/products");
   },
