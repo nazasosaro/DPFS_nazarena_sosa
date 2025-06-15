@@ -10,13 +10,22 @@
         <a href="/users/register" class="login-create">Crear cuenta</a>
       </div>
 
-      <form class="login-form">
+      <form class="login-form" action="/users/login" method="POST">
 
-        <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" class="form-input" placeholder="Email" />
+        <div>
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" class="form-input" placeholder="Email" />
+        </div>
 
-        <label for="password" class="form-label">Contraseña</label>
-        <input type="password" id="password" class="form-input" placeholder="Contraseña" />
+        <div>
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" />
+        </div>
+
+        <div class="form-remember">
+          <input type="checkbox" name="rememberUser" id="rememberUser" />
+          <label for="rememberUser">Recordarme</label>
+        </div>
 
         <button type="submit" class="login-btn">Ingresar</button>
       </form>

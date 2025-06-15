@@ -27,9 +27,12 @@
   <div class="tab-content" id="accountTabContent">
     <!-- Configuración -->
     <div class="tab-pane fade show active" id="config" role="tabpanel">
+      <div class="account-profile text-center mb-4">
+        <img src="<%= user.image %>" alt="Foto de <%= user.name %>" class="rounded-circle" width="120" height="120" />
+      </div>
       <div class="account-box">
-        <p><strong>Nombre:</strong> Sofía Ramírez</p>
-        <p><strong>Email:</strong> sofia.ramirez@example.com</p>
+        <p><strong>Nombre:</strong> </strong> <%= user.name %> <%= user.lastname || '' %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
         <p><strong>Teléfono:</strong> +595 981 234 567</p>
         <button class="btn btn-account">Editar perfil</button>
       </div>
@@ -73,9 +76,7 @@
 
     <!-- Cerrar Sesión -->
     <div class="tab-pane fade" id="logout" role="tabpanel">
-      <div class="text-center mt-4">
-        <button class="btn btn-logout">Cerrar sesión</button>
-      </div>
+      <a href="/users/logout" class="btn btn-logout">Cerrar sesión</a>
     </div>
   </div>
 </main>
