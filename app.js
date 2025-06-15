@@ -32,7 +32,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
   })
-);git 
+);
 
 // mostrar usuario logueado en todas las vistas
 app.use((req, res, next) => {
