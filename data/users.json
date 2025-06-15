@@ -1,10 +1,111 @@
-[{"id":1,"firstName":"Alecia","lastName":"Mansour","email":"amansour0@cnbc.com","password":"gO2/?MCo","role":"client","image":"https://robohash.org/nonmagnamassumenda.png?size=50x50&set=set1","isActive":false},
-{"id":2,"firstName":"Annabel","lastName":"Gheraldi","email":"agheraldi1@usda.gov","password":"aT1*Lc/p%1?!j","role":"developer","image":"https://robohash.org/ablaudantiumet.png?size=50x50&set=set1","isActive":false},
-{"id":3,"firstName":"Noami","lastName":"De Angelo","email":"ndeangelo2@cafepress.com","password":"kV3)}3>/8/","role":"client","image":"https://robohash.org/optioautdolor.png?size=50x50&set=set1","isActive":true},
-{"id":4,"firstName":"Jo ann","lastName":"Lafond","email":"jlafond3@a8.net","password":"nJ5\"'F*Wl*tj","role":"developer","image":"https://robohash.org/cumsedquae.png?size=50x50&set=set1","isActive":true},
-{"id":5,"firstName":"Lucais","lastName":"Ollerhead","email":"lollerhead4@gizmodo.com","password":"yA9,8`fH!{J","role":"client","image":"https://robohash.org/delectuscupiditatetempore.png?size=50x50&set=set1","isActive":false},
-{"id":6,"firstName":"Rich","lastName":"Chippindall","email":"rchippindall5@tumblr.com","password":"kW2.1O$K8'MY","role":"developer","image":"https://robohash.org/nesciuntdeseruntasperiores.png?size=50x50&set=set1","isActive":false},
-{"id":7,"firstName":"Abbey","lastName":"Starton","email":"astarton6@fema.gov","password":"qY3)+7'qiLvMQz","role":"client","image":"https://robohash.org/aliasaccusamusimpedit.png?size=50x50&set=set1","isActive":false},
-{"id":8,"firstName":"Fredi","lastName":"Heijne","email":"fheijne7@4shared.com","password":"uF8!9wB=*/,Y","role":"developer","image":"https://robohash.org/etestquia.png?size=50x50&set=set1","isActive":true},
-{"id":9,"firstName":"Chester","lastName":"Berndt","email":"cberndt8@kickstarter.com","password":"cP2>6QPS_","role":"developer","image":"https://robohash.org/quiadolorconsequatur.png?size=50x50&set=set1","isActive":true},
-{"id":10,"firstName":"Vivyan","lastName":"Pickerell","email":"vpickerell9@unblog.fr","password":"rV5&ZyDz(?Z=g","role":"developer","image":"https://robohash.org/officiisquasprovident.png?size=50x50&set=set1","isActive":true}]
+[
+  {
+    "id": 1,
+    "name": "Alecia",
+    "lastName": "Mansour",
+    "email": "amansour0@cnbc.com",
+    "password": "gO2/?MCo",
+    "role": "client",
+    "image": "https://robohash.org/nonmagnamassumenda.png?size=50x50&set=set1",
+    "isActive": false
+  },
+  {
+    "id": 2,
+    "name": "Annabel",
+    "lastName": "Gheraldi",
+    "email": "agheraldi1@usda.gov",
+    "password": "aT1*Lc/p%1?!j",
+    "role": "developer",
+    "image": "https://robohash.org/ablaudantiumet.png?size=50x50&set=set1",
+    "isActive": false
+  },
+  {
+    "id": 3,
+    "name": "Noami",
+    "lastName": "De Angelo",
+    "email": "ndeangelo2@cafepress.com",
+    "password": "kV3)}3>/8/",
+    "role": "client",
+    "image": "https://robohash.org/optioautdolor.png?size=50x50&set=set1",
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "name": "Jo ann",
+    "lastName": "Lafond",
+    "email": "jlafond3@a8.net",
+    "password": "nJ5\"'F*Wl*tj",
+    "role": "developer",
+    "image": "https://robohash.org/cumsedquae.png?size=50x50&set=set1",
+    "isActive": true
+  },
+  {
+    "id": 5,
+    "name": "Lucais",
+    "lastName": "Ollerhead",
+    "email": "lollerhead4@gizmodo.com",
+    "password": "yA9,8`fH!{J",
+    "role": "client",
+    "image": "https://robohash.org/delectuscupiditatetempore.png?size=50x50&set=set1",
+    "isActive": false
+  },
+  {
+    "id": 6,
+    "name": "Rich",
+    "lastName": "Chippindall",
+    "email": "rchippindall5@tumblr.com",
+    "password": "kW2.1O$K8'MY",
+    "role": "developer",
+    "image": "https://robohash.org/nesciuntdeseruntasperiores.png?size=50x50&set=set1",
+    "isActive": false
+  },
+  {
+    "id": 7,
+    "name": "Abbey",
+    "lastName": "Starton",
+    "email": "astarton6@fema.gov",
+    "password": "qY3)+7'qiLvMQz",
+    "role": "client",
+    "image": "https://robohash.org/aliasaccusamusimpedit.png?size=50x50&set=set1",
+    "isActive": false
+  },
+  {
+    "id": 8,
+    "name": "Fredi",
+    "lastName": "Heijne",
+    "email": "fheijne7@4shared.com",
+    "password": "uF8!9wB=*/,Y",
+    "role": "developer",
+    "image": "https://robohash.org/etestquia.png?size=50x50&set=set1",
+    "isActive": true
+  },
+  {
+    "id": 9,
+    "name": "Chester",
+    "lastName": "Berndt",
+    "email": "cberndt8@kickstarter.com",
+    "password": "cP2>6QPS_",
+    "role": "developer",
+    "image": "https://robohash.org/quiadolorconsequatur.png?size=50x50&set=set1",
+    "isActive": true
+  },
+  {
+    "id": 10,
+    "name": "Vivyan",
+    "lastName": "Pickerell",
+    "email": "vpickerell9@unblog.fr",
+    "password": "rV5&ZyDz(?Z=g",
+    "role": "developer",
+    "image": "https://robohash.org/officiisquasprovident.png?size=50x50&set=set1",
+    "isActive": true
+  },
+  {
+    "id": "93e5db96-061d-49f4-9774-1a18ee5c74db",
+    "name": "Meregneus",
+    "lastname": "Sarnoso",
+    "email": "meresarno@gmail.com",
+    "password": "$2b$10$RMc7A5AFqpl5rIrhYuFbl.7EnRpDdzfGU.UHNQmEi6zI79j.o0z5C",
+    "avatar": "/images/users/1749995344527_670039939.png",
+    "createdAt": "2025-06-15"
+  }
+]

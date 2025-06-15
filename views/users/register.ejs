@@ -9,19 +9,22 @@
         <h1 class="login-title">Crear Cuenta</h1>
       </div>
 
-      <form class="login-form">
+      <form class="login-form" action="/users/register" method="POST" enctype="multipart/form-data">
 
         <label for="name" class="form-label">Nombre</label>
-        <input type="name" id="name" class="form-input" placeholder="Nombre" />
+        <input type="name" name="name" id="name" class="form-input" placeholder="Nombre" />
 
         <label for="lastname" class="form-label">Apellido</label>
-        <input type="lastname" id="lastname" class="form-input" placeholder="Apellido" />
+        <input type="lastname" name="lastname" id="lastname" class="form-input" placeholder="Apellido" />
 
         <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" class="form-input" placeholder="Email" />
+        <input type="email" name="email" id="email" class="form-input" placeholder="Email" />
+
+        <label for="avatar" class="form-label">Imagen de perfil</label>
+        <input type="file" name="avatar" id="avatar" class="form-input" accept="image/*" />
 
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" id="password" class="form-input" placeholder="Contraseña" />
+        <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" />
 
         <button type="submit" class="login-btn">Crear</button>
       </form>
