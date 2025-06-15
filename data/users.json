@@ -1,111 +1,101 @@
 [
   {
-    "id": 1,
-    "name": "Alecia",
-    "lastName": "Mansour",
-    "email": "amansour0@cnbc.com",
-    "password": "gO2/?MCo",
-    "role": "client",
-    "image": "https://robohash.org/nonmagnamassumenda.png?size=50x50&set=set1",
-    "isActive": false
+    "id": "854b8622-3824-4d3b-a68b-b8f44c287236",
+    "name": "Usuario",
+    "lastname": "Prueba",
+    "email": "usuarioprueba@gmail.com",
+    "password": "$2b$10$a0yJFMP1Oq5A3omZvCaGF.7.A4rHViRk50GDr4t4XGa/UMCFbzcEO",
+    "image": "/images/users/1750002117788_599226116.jpg",
+    "createdAt": "2025-06-15"
   },
   {
-    "id": 2,
-    "name": "Annabel",
-    "lastName": "Gheraldi",
-    "email": "agheraldi1@usda.gov",
-    "password": "aT1*Lc/p%1?!j",
-    "role": "developer",
-    "image": "https://robohash.org/ablaudantiumet.png?size=50x50&set=set1",
-    "isActive": false
-  },
-  {
-    "id": 3,
-    "name": "Noami",
-    "lastName": "De Angelo",
-    "email": "ndeangelo2@cafepress.com",
-    "password": "kV3)}3>/8/",
-    "role": "client",
-    "image": "https://robohash.org/optioautdolor.png?size=50x50&set=set1",
-    "isActive": true
-  },
-  {
-    "id": 4,
-    "name": "Jo ann",
-    "lastName": "Lafond",
-    "email": "jlafond3@a8.net",
-    "password": "nJ5\"'F*Wl*tj",
-    "role": "developer",
-    "image": "https://robohash.org/cumsedquae.png?size=50x50&set=set1",
-    "isActive": true
-  },
-  {
-    "id": 5,
-    "name": "Lucais",
-    "lastName": "Ollerhead",
-    "email": "lollerhead4@gizmodo.com",
-    "password": "yA9,8`fH!{J",
-    "role": "client",
-    "image": "https://robohash.org/delectuscupiditatetempore.png?size=50x50&set=set1",
-    "isActive": false
-  },
-  {
-    "id": 6,
-    "name": "Rich",
-    "lastName": "Chippindall",
-    "email": "rchippindall5@tumblr.com",
-    "password": "kW2.1O$K8'MY",
-    "role": "developer",
-    "image": "https://robohash.org/nesciuntdeseruntasperiores.png?size=50x50&set=set1",
-    "isActive": false
-  },
-  {
-    "id": 7,
-    "name": "Abbey",
-    "lastName": "Starton",
-    "email": "astarton6@fema.gov",
-    "password": "qY3)+7'qiLvMQz",
-    "role": "client",
-    "image": "https://robohash.org/aliasaccusamusimpedit.png?size=50x50&set=set1",
-    "isActive": false
-  },
-  {
-    "id": 8,
-    "name": "Fredi",
-    "lastName": "Heijne",
-    "email": "fheijne7@4shared.com",
-    "password": "uF8!9wB=*/,Y",
-    "role": "developer",
-    "image": "https://robohash.org/etestquia.png?size=50x50&set=set1",
-    "isActive": true
-  },
-  {
-    "id": 9,
-    "name": "Chester",
-    "lastName": "Berndt",
-    "email": "cberndt8@kickstarter.com",
-    "password": "cP2>6QPS_",
-    "role": "developer",
-    "image": "https://robohash.org/quiadolorconsequatur.png?size=50x50&set=set1",
-    "isActive": true
-  },
-  {
-    "id": 10,
-    "name": "Vivyan",
-    "lastName": "Pickerell",
-    "email": "vpickerell9@unblog.fr",
-    "password": "rV5&ZyDz(?Z=g",
-    "role": "developer",
-    "image": "https://robohash.org/officiisquasprovident.png?size=50x50&set=set1",
-    "isActive": true
-  },
-  {
-    "id": "93e5db96-061d-49f4-9774-1a18ee5c74db",
-    "name": "Meregneus",
+    "id": "24294be5-949e-480b-9cf2-b7d95121c7f1",
+    "name": "Pato",
     "lastname": "Sarnoso",
-    "email": "meresarno@gmail.com",
-    "password": "$2b$10$RMc7A5AFqpl5rIrhYuFbl.7EnRpDdzfGU.UHNQmEi6zI79j.o0z5C",
-    "avatar": "/images/users/1749995344527_670039939.png",
+    "email": "patosarnoso@gmail.com",
+    "password": "$2b$10$Z3dvKRPJqU41ybtPEWcfUuIqj8bEQ0/MDOAimhoYHro8C.kitP74G",
+    "image": "/images/users/1750002171994_72798163.png",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "271592ad-391b-4dce-9dec-5cae76504723",
+    "name": "Ana",
+    "lastname": "Martínez",
+    "email": "ana.martinez@test.com",
+    "password": "$2b$10$dfxaC1nn53Ts4Cpoh2tlgOVGmQ7/jH5lEZSX3EkA8NoUlOdVfhbMO",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "507f116c-5f3c-416a-ba60-b58cfa83dc0a",
+    "name": "Juan",
+    "lastname": "Gómez",
+    "email": "juan.gomez@test.com",
+    "password": "$2b$10$AigOLUl1q2dwiMHa6oFDPesvVBMOGi3i486kBkrwdgntz2DhuCQqi",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "c2d64afe-9b0a-4801-919e-1167ee2468ec",
+    "name": "Sofía",
+    "lastname": "López",
+    "email": "sofia.lopez@test.com",
+    "password": "$2b$10$JwzinuAgdjpVGq0c2FvtiOUgWZwzwJt0A4v4aXOrDiVEVAIxX1A1u",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "2150b89f-d535-405c-aca0-7c908db7c552",
+    "name": "Martín",
+    "lastname": "Ruiz",
+    "email": "martin.ruiz@test.com",
+    "password": "$2b$10$5Yyvi0YsY28Flz1BTshhHuyPwK.IQwArduJ4zx3zpYvqFHbnLeawy",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "2c82cf56-d2e6-490a-a0f8-cbc447c905ce",
+    "name": "Laura",
+    "lastname": "Fernández",
+    "email": "laura.fernandez@test.com",
+    "password": "$2b$10$hBPJYvnOgug2Sh3f.zqoE.IDRRb7vPhAuGIzdXmZXs.rN0Zubl9i6",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "f99b830b-1333-46d9-93ec-491de9efc458",
+    "name": "Diego",
+    "lastname": "Sosa",
+    "email": "diego.sosa@test.com",
+    "password": "$2b$10$yCXDn7TrMeXgcIP.j.mol.a5QD952oP3PnU2.w4vfml0IhVXT/xUe",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "8d6754a5-3747-4d6e-8101-35889693a03b",
+    "name": "Valeria",
+    "lastname": "Ortega",
+    "email": "valeria.ortega@test.com",
+    "password": "$2b$10$smEAKqCshZK8.93nf72UwuFx5OQOEPNW.Unma4sMBPAluFFPCxV5C",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "b23a20c5-1444-4c35-aaf8-7198141f4695",
+    "name": "Rodrigo",
+    "lastname": "Medina",
+    "email": "rodrigo.medina@test.com",
+    "password": "$2b$10$pqJtaVSJjAIa20BcKwtZGOl661MPfbKnOTcLenk5Xt6MWuQDfN4TW",
+    "image": "/assets_front/images/default.jpg",
+    "createdAt": "2025-06-15"
+  },
+  {
+    "id": "667e28b5-5686-4a2c-bbd0-7930e524b910",
+    "name": "Mariana",
+    "lastname": "Pérez",
+    "email": "mariana.perez@test.com",
+    "password": "$2b$10$D3nexHZF.8hL.iajpRRkmuZEO.ds2EDHcJ6x/X3ZQbsMR2vCfsZj6",
+    "image": "/assets_front/images/default.jpg",
     "createdAt": "2025-06-15"
   }
 ]
