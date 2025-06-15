@@ -22,8 +22,13 @@
 
       <!-- Íconos de usuario y carrito -->
       <div class="header-actions">
+        <% if (locals.userLogged) { %>
+        <p>Hola, <%= userLogged.name %></p>
+        <a href="/users/logout">Salir</a>
+        <% } else { %>
         <a href="/users/login" aria-label="Usuario">Iniciar sesion</a>
         <a href="/users/register" aria-label="Usuario">Registrarse</a>
+        <% } %>
         <a href="/products/cart" aria-label="Carrito">Carrito (0)</a>
       </div>
     </div>
