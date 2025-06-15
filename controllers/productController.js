@@ -34,7 +34,9 @@ module.exports = {
       id: uuidv4(),
       name: req.body.name || "Nombre no especificado",
       description: req.body.description || "Sin descripción",
-      image: req.body.image?.trim() || "/assets_front/images/default.jpg",
+      image: req.file
+        ? `/uploads/products/${req.file.filename}`
+        : "/assets_front/images/default.jpg",
       category: req.body.category || "Sin categoría",
       colors: req.body.colors || "Sin colores",
       price: parseFloat(req.body.price) || 0,
@@ -49,11 +51,47 @@ module.exports = {
     res.redirect(`/products/details/${newProduct.id}`);
   },
 
-  cart: (req, res) => {
-    res.render("products/productCart", { title: "Carrito" });
+  // mostrar formulario de edicion de producto especifico
+  edit: async (req, res) => {
+    const products = await loadProducts();
+    const product = products.find(
+      (p) => String(p.id) === String(req.params.id)
+    );
+    res.render("products/editProduct", { title: "Editar Producto", product });
   },
 
-  edit: (req, res) => {
-    res.render("products/editProduct", { title: "Editar Producto" });
+  // actualizar producto (PUT)
+  update: async (req, res) => {
+    const products = await loadProducts();
+    const index = products.findIndex(
+      (p) => String(p.id) === String(req.params.id)
+    );
+    if (index === -1) return res.status(404).send("Producto no encontrado");
+
+    products[index] = {
+      ...products[index],
+      name: req.body.name?.trim() || products[index].name,
+      description: req.body.description?.trim() || products[index].description,
+      image: req.file
+        ? `/uploads/products/${req.file.filename}`
+        : products[index].image,
+      category: req.body.category?.trim() || products[index].category,
+      colors: req.body.colors?.trim() || products[index].colors,
+      price: req.body.price
+        ? parseFloat(req.body.price)
+        : products[index].price,
+      promotional_price: req.body.promotionalPrice
+        ? parseFloat(req.body.promotionalPrice)
+        : products[index].promotional_price,
+      stock: req.body.stock ? parseInt(req.body.stock) : products[index].stock,
+    };
+    
+
+    await saveProducts(products);
+    res.redirect("/products");
+  },
+
+  cart: (req, res) => {
+    res.render("products/productCart", { title: "Carrito" });
   },
 };

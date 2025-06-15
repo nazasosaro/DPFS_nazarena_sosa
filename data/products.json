@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "name": "elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien",
-    "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "image": "http://dummyimage.com/193x100.png/ff4444/ffffff",
-    "category": "Peluches",
-    "colors": "negro",
-    "price": 876352,
-    "promotional_price": 701081.6000000001,
-    "stock": 57,
+    "name": "Pato Sarnoso",
+    "description": "Middleware is software that lies between an operating system and the applications running on it. ",
+    "image": "/uploads/products/1749944486423-301022206.png",
+    "category": "Middleware",
+    "colors": "rojo",
+    "price": 120000,
+    "promotional_price": 70000,
+    "stock": 9,
     "status": "active"
   },
   {
@@ -49,14 +49,14 @@
   },
   {
     "id": 5,
-    "name": "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem",
+    "name": "Tortuga Rosada",
     "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
     "image": "http://dummyimage.com/226x100.png/dddddd/000000",
-    "category": "Muñecas",
+    "category": "Tortus",
     "colors": "rosado",
     "price": 146358,
     "promotional_price": 117086.4,
-    "stock": 20,
+    "stock": 9,
     "status": "deleted"
   },
   {

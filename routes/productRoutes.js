@@ -1,14 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
+const upload = require("../middlewares/uploadProductImage");
 
 router.get("/", productController.products);
 router.get("/details/:id", productController.details);
 
 router.get("/create", productController.create); // muedtra el formulario
-router.post("/", productController.store) // guardado del producto
+router.post("/", upload.single("image"), productController.store) // guardado del producto
+
+router.get("/edit/:id", productController.edit);
+router.put("/:id", upload.single("image"), productController.update);
 
 router.get("/cart", productController.cart);
-router.get("/edit", productController.edit);
 
 module.exports = router;
