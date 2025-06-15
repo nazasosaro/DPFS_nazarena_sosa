@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+const rememberMiddleware = require("./middlewares/rememberMiddleware");
 var logger = require('morgan');
 const methodOverride = require("method-override");
 
@@ -9,7 +10,7 @@ const methodOverride = require("method-override");
 const indexRouter = require('./routes/indexRoute');
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
-
+const session = require("express-session");
 
 var app = express();
 
@@ -21,8 +22,23 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(rememberMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
+
+app.use(
+  session({
+    secret: "morecommerce",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+// mostrar usuario logueado en todas las vistas
+app.use((req, res, next) => {
+  res.locals.userLogged = req.session.userLogin || null;
+  next();
+});
+
 
 app.use('/', indexRouter);
 app.use("/products", productRoutes);
