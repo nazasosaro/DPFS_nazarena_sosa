@@ -16,44 +16,27 @@
 
     <!-- Grilla de productos -->
     <article class="catalog-products">
-      <!-- Card de producto -->
-      <div class="product-card">
-        <a href="/products/details">
-          <img src="/assets_front/images/products/producto1.jpg" alt="Peluche panda" />
-        </a>
-        <div class="product-info">
-          <a href="/products/details">
-            <h3 class="product-name">Peluche Panda</h3>
-          </a>
-          <p class="product-price">Gs. 120.000</p>
-          <button class="product-button">Agregar al carrito</button>
-        </div>
-      </div>
 
-      <div class="product-card">
-        <a href="/products/details">
-          <img src="/assets_front/images/products/producto2.jpg" alt="Auto de juguete" />
-        </a>
-        <div class="product-info">
-          <a href="/products/details">
-            <h3 class="product-name">Auto de Juguete</h3>
-          </a>
-          <p class="product-price">Gs. 95.000</p>
-          <button class="product-button">Agregar al carrito</button>
-        </div>
-      </div>
-
-      <!-- card dinamica con BD JSON -->
       <% products.forEach(product => { %>
       <div class="product-card">
-        <a href="/products/details/<%= product.id %>">
-          <img src="<%= product.image %>" alt="Peluche panda" />
+        <a href="/products/details/<%= product.productId %>">
+          <img src="<%= product.image %>" alt="<%= product.name %>" />
         </a>
         <div class="product-info">
-          <a href="/products/details/<%= product.id %>">
+          <a href="/products/details/<%= product.productId %>">
             <h3 class="product-name"><%= product.name %></h3>
           </a>
-          <p class="product-price">Gs. <%= product.price %></p>
+          <% if (product.category) { %>
+          <p class="product-category"><%= product.category.name %></p>
+          <% } %>
+          <p class="product-price">
+            <% if (product.promotionalPrice > 0) { %>
+            <span class="product-price-offer">Gs. <%= product.promotionalPrice %></span>
+            <span class="product-price-old">Gs. <%= product.price %></span>
+            <% } else { %>
+            Gs. <%= product.price %>
+            <% } %>
+          </p>
           <button class="product-button">Agregar al carrito</button>
         </div>
       </div>
@@ -61,8 +44,6 @@
 
     </article>
   </section>
-
 </main>
-
 
 <%- include('../partials/footer') %>

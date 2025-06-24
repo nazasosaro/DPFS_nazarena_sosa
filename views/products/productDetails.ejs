@@ -11,25 +11,29 @@
 
       <!-- Información del producto -->
       <div class="product-info">
-        <span class="product-category"><%= product.category %></span>
+        <span class="product-category"><%= product.category?.name || "Sin categoría" %></span>
         <h1 class="product-name"><%= product.name %></h1>
-        <p class="product-code">Código: 123456</p>
+        <p class="product-code">Código: <%= product.productId %></p>
         <p class="product-description">
-
+          <%= product.description %>
         </p>
 
         <div class="product-pricing">
-          <span class="product-price-offer">Gs. <%= product.promotional_price %></span>
+          <span class="product-price-offer">Gs. <%= product.promotionalPrice %></span>
           <span class="product-price-old">Gs. <%= product.price %></span>
         </div>
 
         <div class="color-options">
           <p>Colores disponibles:</p>
 
-          <input type="radio" id="<%= product.colors %>" name="color" value="<%= product.colors %>" hidden />
-          <label for="<%= product.colors %>" class="color-option">
-            <%= product.colors %>
+          <% if (product.color) { %>
+          <input type="radio" id="<%= product.color.name %>" name="color" value="<%= product.color.name %>" hidden />
+          <label for="<%= product.color.name %>" class="color-option">
+            <%= product.color.name %>
           </label>
+          <% } else { %>
+          <span class="text-muted">Sin color disponible</span>
+          <% } %>
         </div>
 
         <div class="product-quantity">
@@ -45,6 +49,5 @@
     </div>
   </div>
 </main>
-
 
 <%- include('../partials/footer') %>
