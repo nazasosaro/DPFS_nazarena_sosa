@@ -23,7 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       productColorId: {
         type: DataTypes.INTEGER,
-        field: "product_color_id",
+        field: "product_colors_id",
+      },
+      productStatusId: {
+        type: DataTypes.INTEGER,
+        field: "product_statuses_id",
       },
     },
     {
@@ -47,6 +51,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "productId",
       as: "cartDetails",
     });
+
+    Product.belongsTo(models.ProductStatus, {
+      foreignKey: "productStatusId",
+      as: "status",
+    });
+    
   };
 
   return Product;
