@@ -28,9 +28,10 @@
     <!-- Configuración -->
     <div class="tab-pane fade show active" id="config" role="tabpanel">
       <div class="account-profile text-center mb-4">
-        <img src="<%= user.image %>" alt="Foto de <%= user.name %>" class="rounded-circle" width="120" height="120" />
+        <img src="<%= user.image || '/assets_front/images/default-user.jpg' %>" alt="Foto de perfil" width="120" />
       </div>
       <div class="account-box">
+        <img src="<%= user.image %>" alt="Foto de perfil" width="120" />
         <p><strong>Nombre:</strong> </strong> <%= user.name %> <%= user.lastname || '' %></p>
         <p><strong>Email:</strong> <%= user.email %></p>
         <p><strong>Teléfono:</strong> +595 981 234 567</p>

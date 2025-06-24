@@ -1,3 +1,5 @@
+// en la terminal ejecutar node testConnection.js para probar el test
+
 const db = require("./database/models");
 
 async function test() {

@@ -2,7 +2,6 @@
 <%- include('../partials/header') %>
 
 <main>
-
   <section class="login-container">
     <div class="login-card">
       <div class="login-header">
@@ -10,20 +9,25 @@
         <a href="/users/register" class="login-create">Crear cuenta</a>
       </div>
 
-      <form class="login-form" action="/users/login" method="POST">
+      <% if (typeof error !== 'undefined' && error) { %>
+      <div class="form-errors">
+        <p><%= error %></p>
+      </div>
+      <% } %>
 
+      <form class="login-form" action="/users/login" method="POST">
         <div>
           <label for="email" class="form-label">Email</label>
-          <input type="email" name="email" id="email" class="form-input" placeholder="Email" />
+          <input type="email" name="email" id="email" class="form-input" placeholder="Email" value="<%= typeof old !== 'undefined' ? old.email : '' %>" required />
         </div>
 
         <div>
           <label for="password" class="form-label">Contraseña</label>
-          <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" />
+          <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" required />
         </div>
 
         <div class="form-remember">
-          <input type="checkbox" name="rememberUser" id="rememberUser" />
+          <input type="checkbox" name="rememberUser" id="rememberUser" <%= old?.rememberUser ? 'checked' : '' %> />
           <label for="rememberUser">Recordarme</label>
         </div>
 
@@ -36,8 +40,6 @@
       </div>
     </div>
   </section>
-
-
 </main>
 
 <%- include('../partials/footer') %>

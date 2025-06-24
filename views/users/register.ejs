@@ -2,7 +2,6 @@
 <%- include('../partials/header') %>
 
 <main>
-
   <section class="login-container">
     <div class="login-card">
       <div class="login-header">
@@ -11,20 +10,40 @@
 
       <form class="login-form" action="/users/register" method="POST" enctype="multipart/form-data">
 
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <ul class="form-errors">
+          <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+
         <label for="name" class="form-label">Nombre</label>
-        <input type="name" name="name" id="name" class="form-input" placeholder="Nombre" />
+        <input type="text" name="name" id="name" class="form-input" placeholder="Nombre" value="<%= typeof old !== 'undefined' ? old.name : '' %>" required />
 
         <label for="lastname" class="form-label">Apellido</label>
-        <input type="lastname" name="lastname" id="lastname" class="form-input" placeholder="Apellido" />
+        <input type="text" name="lastname" id="lastname" class="form-input" placeholder="Apellido" value="<%= typeof old !== 'undefined' ? old.lastname : '' %>" required />
 
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-input" placeholder="Email" />
+        <input type="email" name="email" id="email" class="form-input" placeholder="Email" value="<%= typeof old !== 'undefined' ? old.email : '' %>" required />
 
         <label for="image" class="form-label">Imagen de perfil</label>
         <input type="file" name="image" id="image" class="form-input" accept="image/*" />
 
+        <!-- Selección de categoría si se quiere usar -->
+        <% if (typeof categories !== 'undefined' && categories.length > 0) { %>
+        <label for="user_categories_id" class="form-label">Categoría de usuario</label>
+        <select name="user_categories_id" id="user_categories_id" class="form-input">
+          <% categories.forEach(category => { %>
+          <option value="<%= category.user_categories_id %>" <%= old?.user_categories_id == category.user_categories_id ? 'selected' : '' %>>
+            <%= category.category %>
+          </option>
+          <% }) %>
+        </select>
+        <% } %>
+
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" />
+        <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" required />
 
         <button type="submit" class="login-btn">Crear</button>
       </form>
@@ -34,7 +53,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <%- include('../partials/footer') %>
