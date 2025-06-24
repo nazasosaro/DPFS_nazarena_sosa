@@ -1,38 +1,53 @@
-const bcrypt = require("bcryptjs"); // paquete de Node.js para encriptar las contrasenias
+const bcrypt = require("bcryptjs");
 const path = require("path");
-const loadUsers = require("../utils/loadUsers");
-const saveUsers = require("../utils/saveUsers");
-const { v4: uuidv4 } = require("uuid"); // paquete de Node.js que genera identificadores unicos universales
+const db = require("../database/models"); // importacion de Sequelize
+const { Op } = require("sequelize");
 
 module.exports = {
-  // mostrar vista formulario de login
+  // mostrar formulario de login
   loginForm: (req, res) => {
-    res.render("users/login", { title: "Iniciar Sesión" });
+    const error = req.session.loginError || null;
+    const old = req.session.oldInput || {};
+    // Limpiamos sesión después de usarlos
+    delete req.session.loginError;
+    delete req.session.oldInput;
+
+    res.render("users/login", {
+      title: "Iniciar Sesión",
+      error,
+      old,
+    });
   },
 
-  // sesion iniciada del usuario
+  // procesar login
   loginProcess: async (req, res) => {
     try {
       const { email, password, rememberUser } = req.body;
-      const users = await loadUsers();
 
-      const userFound = users.find(
-        (user) => user.email === email.trim().toLowerCase()
-      );
+      const userFound = await db.User.findOne({
+        where: { email: email.trim().toLowerCase() },
+      });
 
+      // Si no se encuentra el usuario o la contraseña no coincide
       if (!userFound || !bcrypt.compareSync(password, userFound.password)) {
-        return res.status(401).send("Credenciales inválidas");
+        // Guardamos los errores y datos ingresados en sesión temporal
+        req.session.loginError = "Credenciales inválidas";
+        req.session.oldInput = { email, rememberUser }; // No guardamos la contraseña
+        return res.redirect("/users/login");
       }
 
-      // guardado de sesion
+      console.log("Usuario encontrado:", userFound.toJSON());
+
+
+      // Guardamos al usuario en sesión
       req.session.userLogin = {
-        id: userFound.id,
+        userId: userFound.userId,
         name: userFound.name,
         email: userFound.email,
         image: userFound.image,
       };
 
-      // si el checkout fue marcado, guardar una cookie por 30 días
+      // Recordar usuario con cookie si marcó la opción
       if (rememberUser) {
         res.cookie("userEmail", userFound.email, {
           maxAge: 1000 * 60 * 60 * 24 * 30, // 30 días
@@ -40,14 +55,18 @@ module.exports = {
         });
       }
 
+      // Limpiamos errores antiguos si el login fue exitoso
+      delete req.session.loginError;
+      delete req.session.oldInput;
+
       res.redirect("/users/account");
     } catch (error) {
-      console.error("Error al procesar login:", error);
+      console.error("Error al iniciar sesión:", error);
       res.status(500).send("Hubo un error al iniciar sesión.");
     }
   },
 
-  // cerrar sesion
+  // cerrar sesión
   logout: (req, res) => {
     req.session.destroy(() => {
       res.clearCookie("userEmail");
@@ -55,32 +74,39 @@ module.exports = {
     });
   },
 
-  // mostrar vista formulario de registro
-  registerForm: (req, res) => {
-    res.render("users/register", { title: "Registro" });
+  // mostrar formulario de registro
+  registerForm: async (req, res) => {
+    res.render("users/register", {
+      title: "Registro",
+      categories: await db.UserCategory.findAll(),
+      errors: [], // o los que vengan de express-validator
+      old: req.body, // para repoblar el formulario si falla
+    });
   },
 
-  // guardar nuevo usuario
+  // procesar registro
   registerProcess: async (req, res) => {
     try {
-      const users = await loadUsers();
-
       const { name, lastname, email, password } = req.body;
 
-      const newUser = {
-        id: uuidv4(),
+      const existingUser = await db.User.findOne({
+        where: { email: email.trim().toLowerCase() },
+      });
+
+      if (existingUser) {
+        return res.status(400).send("Este email ya está registrado.");
+      }
+
+      const newUser = await db.User.create({
         name: name.trim(),
         lastname: lastname.trim(),
         email: email.trim().toLowerCase(),
         password: bcrypt.hashSync(password, 10),
         image: req.file
-          ? `/images/users/${req.file.filename}`
-          : "/assets_front/images/default.jpg",
-        createdAt: new Date().toISOString().split("T")[0],
-      };
-
-      users.push(newUser);
-      await saveUsers(users);
+          ? `/uploads/users/${req.file.filename}`
+          : "/assets_front/images/default-user.jpg",
+        userCategoryId: 3, // cliente
+      });
 
       res.redirect("/users/login");
     } catch (error) {
@@ -89,21 +115,38 @@ module.exports = {
     }
   },
 
+  // formulario de recuperación de contraseña
   forgotPasswordForm: (req, res) => {
     res.render("users/forgotPasssword", { title: "Reestablecer contraseña" });
   },
 
   forgotPasswordProcess: (req, res) => {
-    // TODO: lógica de reestablecer contraseña
     res.send("Procesando reestablecer contraseña...");
   },
 
-  // mostrar vista de cuenta de usuario
-  account: (req, res) => {
-    const user = req.session.userLogin;
-    res.render("users/account", {
-      title: "Mi Cuenta",
-      user,
-    });
+  // vista de cuenta
+  account: async (req, res) => {
+    try {
+      if (!req.session.userLogin) {
+        return res.redirect("/users/login");
+      }
+
+      console.log("ID en sesión:", req.session.userLogin.userId);
+
+
+      const user = await db.User.findByPk(req.session.userLogin.userId);
+
+      if (!user) {
+        return res.status(404).send("Usuario no encontrado");
+      }
+
+      res.render("users/account", {
+        title: "Mi Cuenta",
+        user,
+      });
+    } catch (error) {
+      console.error("Error al cargar cuenta:", error);
+      res.status(500).send("No se pudo cargar la cuenta.");
+    }
   },
 };
