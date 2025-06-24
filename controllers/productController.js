@@ -50,56 +50,81 @@ module.exports = {
 
   // mostrar formulario de creación
   create: async (req, res) => {
-    const [categories, colors] = await Promise.all([
-      db.ProductCategory.findAll(),
-      db.ProductColor.findAll(),
-    ]);
-    res.render("products/createProduct", {
-      title: "Cargar Producto",
-      categories,
-      colors,
-    });
-  },
+    try {
+      const [categories, colors] = await Promise.all([
+        db.ProductCategory.findAll(),
+        db.ProductColor.findAll(),
+      ]);
+  
+      res.render("products/createProduct", {
+        title: "Crear producto",
+        categories,
+        colors,
+      });
+    } catch (error) {
+      console.error("Error al cargar formulario de creación:", error);
+      res.status(500).send("Error al cargar el formulario de creación.");
+    }
+  },  
 
   // guardar producto nuevo (POST)
   store: async (req, res) => {
     try {
+      const {
+        name,
+        description,
+        category,
+        colors,
+        price,
+        promotionalPrice,
+        stock,
+      } = req.body;
+  
       await db.Product.create({
-        name: req.body.name,
-        description: req.body.description,
+        name: name.trim(),
+        description: description.trim(),
         image: req.file
           ? `/uploads/products/${req.file.filename}`
           : "/assets_front/images/default.jpg",
-        productCategoryId: req.body.category,
-        productColorId: req.body.colors,
-        price: parseFloat(req.body.price) || 0,
-        promotionalPrice: parseFloat(req.body.promotionalPrice) || 0,
-        stock: parseInt(req.body.stock) || 0,
+        productCategoryId: parseInt(category),
+        productColorId: parseInt(colors),
+        price: parseFloat(price) || 0,
+        promotionalPrice: parseFloat(promotionalPrice) || 0,
+        stock: parseInt(stock) || 0,
         status: "active",
       });
-
+  
       res.redirect("/products");
     } catch (error) {
       console.error("Error al crear producto:", error);
       res.status(500).send("Error interno del servidor");
     }
-  },
+  },  
 
   // mostrar formulario de edición
   edit: async (req, res) => {
-    const product = await db.Product.findByPk(req.params.id);
-    const [categories, colors] = await Promise.all([
-      db.ProductCategory.findAll(),
-      db.ProductColor.findAll(),
-    ]);
-    if (!product) return res.status(404).send("Producto no encontrado");
-
-    res.render("products/editProduct", {
-      title: "Editar Producto",
-      product,
-      categories,
-      colors,
-    });
+    try {
+      const product = await db.Product.findByPk(req.params.id, {
+        include: ["category", "color"], // según los alias definidos en las asociaciones
+      });
+  
+      if (!product) return res.status(404).send("Producto no encontrado");
+  
+      const [categories, colors] = await Promise.all([
+        db.ProductCategory.findAll(),
+        db.ProductColor.findAll(),
+      ]);
+  
+      res.render("products/editProduct", {
+        title: "Editar Producto",
+        product,
+        categories,
+        colors,
+      });
+    } catch (error) {
+      console.error("Error al cargar formulario de edición:", error);
+      res.status(500).send("Error interno del servidor");
+    }
   },
 
   // actualizar producto (POST/PUT)

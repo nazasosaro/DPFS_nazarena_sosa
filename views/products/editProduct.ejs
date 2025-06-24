@@ -2,30 +2,54 @@
 <%- include('../partials/header') %>
 
 <main>
-
   <section class="container">
     <h1>Editar producto</h1>
-    <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+    <form action="/products/<%= product.productId %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
       <input type="text" name="name" value="<%= product.name %>" required placeholder="Editar nombre" />
-      <textarea name="description" required placeholder="Editar description"><%= product.description %></textarea>
+
+      <textarea name="description" required placeholder="Editar descripción"><%= product.description %></textarea>
+
       <p>Imagen actual:</p>
       <img src="<%= product.image %>" alt="<%= product.name %>" width="150" />
-      <input type="file" name="image" placeholder="Subir file" />
-      <input type="text" name="category" value="<%= product.category %>" required placeholder="Editar categoria" />
-      <input type="text" name="colors" value="<%= product.colors %>" placeholder="Editar color" />
+      <input type="hidden" name="oldImage" value="<%= product.image %>" />
+      <input type="file" name="image" placeholder="Subir nueva imagen" />
+
+      <!-- Select de Categorías -->
+      <label for="category">Categoría</label>
+      <select name="category" id="category" required>
+        <% categories.forEach(category => { %>
+        <option value="<%= category.productCategoryId %>" <%= category.productCategoryId === product.productCategoryId ? 'selected' : '' %>>
+          <%= category.name %>
+        </option>
+        <% }) %>
+      </select>
+
+      <!-- Select de Colores -->
+      <label for="colors">Color</label>
+      <select name="colors" id="colors" required>
+        <% colors.forEach(color => { %>
+        <option value="<%= color.productColorId %>" <%= color.productColorId === product.productColorId ? 'selected' : '' %>>
+          <%= color.name %>
+        </option>
+        <% }) %>
+      </select>
+
       <input type="number" step="0.01" name="price" value="<%= product.price %>" required placeholder="Editar precio" />
-      <input type="number" step="0.01" name="promotionalPrice" value="<%= product.promotional_price %>" required placeholder="Editar precio promocional" />
+      <input type="number" step="0.01" name="promotionalPrice" value="<%= product.promotionalPrice %>" required placeholder="Editar precio promocional" />
       <input type="number" name="stock" value="<%= product.stock %>" required placeholder="Editar stock" />
+
       <label for="status">Estado del producto</label>
       <select name="status" id="status">
         <option value="active" <%= product.status === "active" ? "selected" : "" %>>Activo</option>
         <option value="inactive" <%= product.status === "inactive" ? "selected" : "" %>>Inactivo</option>
         <option value="deleted" <%= product.status === "deleted" ? "selected" : "" %>>Eliminado</option>
       </select>
+
       <button type="submit">Actualizar producto</button>
     </form>
   </section>
-
 </main>
 
 <%- include('../partials/footer') %>
