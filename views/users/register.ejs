@@ -8,42 +8,56 @@
         <h1 class="login-title">Crear Cuenta</h1>
       </div>
 
-      <form class="login-form" action="/users/register" method="POST" enctype="multipart/form-data">
+      <form class="login-form" id="registerForm" action="/users/register" method="POST" enctype="multipart/form-data">
 
-        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
-        <ul class="form-errors">
-          <% errors.forEach(error => { %>
-          <li><%= error.msg %></li>
-          <% }) %>
-        </ul>
-        <% } %>
+        <!-- Nombre -->
+        <div class="form-group">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" name="name" id="name" class="form-input" placeholder="Nombre" value="<%= old?.name || '' %>" required />
+          <span class="error-message" id="nameError"></span>
+        </div>
 
-        <label for="name" class="form-label">Nombre</label>
-        <input type="text" name="name" id="name" class="form-input" placeholder="Nombre" value="<%= typeof old !== 'undefined' ? old.name : '' %>" required />
+        <!-- Apellido -->
+        <div class="form-group">
+          <label for="lastname" class="form-label">Apellido</label>
+          <input type="text" name="lastname" id="lastname" class="form-input" placeholder="Apellido" value="<%= old?.lastname || '' %>" required />
+          <span class="error-message" id="lastnameError"></span>
+        </div>
 
-        <label for="lastname" class="form-label">Apellido</label>
-        <input type="text" name="lastname" id="lastname" class="form-input" placeholder="Apellido" value="<%= typeof old !== 'undefined' ? old.lastname : '' %>" required />
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" class="form-input" placeholder="Email" value="<%= old?.email || '' %>" required />
+          <span class="error-message" id="emailError"></span>
+        </div>
 
-        <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-input" placeholder="Email" value="<%= typeof old !== 'undefined' ? old.email : '' %>" required />
+        <!-- Imagen -->
+        <div class="form-group">
+          <label for="image" class="form-label">Imagen de perfil</label>
+          <input type="file" name="image" id="image" class="form-input" accept="image/*" />
+          <span class="error-message" id="imageError"></span>
+        </div>
 
-        <label for="image" class="form-label">Imagen de perfil</label>
-        <input type="file" name="image" id="image" class="form-input" accept="image/*" />
+        <!-- Categoría -->
+        <div class="form-group">
+          <% if (categories?.length > 0) { %>
+          <label for="user_categories_id" class="form-label">Categoría de usuario</label>
+          <select name="user_categories_id" id="user_categories_id" class="form-input">
+            <% categories.forEach(category => { %>
+            <option value="<%= category.user_categories_id %>" <%= old?.user_categories_id == category.user_categories_id ? 'selected' : '' %>>
+              <%= category.category %>
+            </option>
+            <% }) %>
+          </select>
+          <% } %>
+        </div>
 
-        <!-- Selección de categoría si se quiere usar -->
-        <% if (typeof categories !== 'undefined' && categories.length > 0) { %>
-        <label for="user_categories_id" class="form-label">Categoría de usuario</label>
-        <select name="user_categories_id" id="user_categories_id" class="form-input">
-          <% categories.forEach(category => { %>
-          <option value="<%= category.user_categories_id %>" <%= old?.user_categories_id == category.user_categories_id ? 'selected' : '' %>>
-            <%= category.category %>
-          </option>
-          <% }) %>
-        </select>
-        <% } %>
-
-        <label for="password" class="form-label">Contraseña</label>
-        <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" required />
+        <!-- Contraseña -->
+        <div class="form-group mt-4">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" required />
+          <span class="error-message" id="passwordError"></span>
+        </div>
 
         <button type="submit" class="login-btn">Crear</button>
       </form>
@@ -56,3 +70,5 @@
 </main>
 
 <%- include('../partials/footer') %>
+<script src="https://cdn.jsdelivr.net/npm/validator@13.9.0/validator.min.js"></script>
+<script src="/assets_front/js/validateRegister.js"></script>
