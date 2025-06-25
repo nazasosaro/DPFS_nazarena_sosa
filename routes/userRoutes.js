@@ -19,5 +19,12 @@ router.get("/forgot-password", userController.forgotPasswordForm);
 router.post("/forgot-password", userController.forgotPasswordProcess);
 
 router.get("/account", authMiddleware, userController.account);
+router.post(
+  "/account",
+  authMiddleware,
+  uploadUserImage.single("image"),
+  userController.updateAccount
+);
+
 
 module.exports = router;

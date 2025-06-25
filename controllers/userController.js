@@ -38,7 +38,6 @@ module.exports = {
 
       console.log("Usuario encontrado:", userFound.toJSON());
 
-
       // Guardamos al usuario en sesión
       req.session.userLogin = {
         userId: userFound.userId,
@@ -133,7 +132,6 @@ module.exports = {
 
       console.log("ID en sesión:", req.session.userLogin.userId);
 
-
       const user = await db.User.findByPk(req.session.userLogin.userId);
 
       if (!user) {
@@ -147,6 +145,46 @@ module.exports = {
     } catch (error) {
       console.error("Error al cargar cuenta:", error);
       res.status(500).send("No se pudo cargar la cuenta.");
+    }
+  },
+
+  // actualizacion de datos de cuenta
+  updateAccount: async (req, res) => {
+    try {
+      const userId = req.session.userLogin.userId;
+      const { name, lastname, email, password, confirmPassword, oldImage } =
+        req.body;
+
+      const userToUpdate = await db.User.findByPk(userId);
+      if (!userToUpdate) return res.status(404).send("Usuario no encontrado");
+
+      // Actualizar datos básicos
+      userToUpdate.name = name.trim();
+      userToUpdate.lastname = lastname.trim();
+      userToUpdate.email = email.trim().toLowerCase();
+      userToUpdate.image = req.file
+        ? `/uploads/users/${req.file.filename}`
+        : oldImage;
+
+      // Si el usuario desea cambiar su contraseña
+      if (password) {
+        if (password !== confirmPassword) {
+          return res.status(400).send("Las contraseñas no coinciden");
+        }
+        userToUpdate.password = bcrypt.hashSync(password, 10);
+      }
+
+      await userToUpdate.save();
+
+      // Actualizamos la sesión (email, nombre, imagen)
+      req.session.userLogin.name = userToUpdate.name;
+      req.session.userLogin.email = userToUpdate.email;
+      req.session.userLogin.image = userToUpdate.image;
+
+      res.redirect("/users/account");
+    } catch (error) {
+      console.error("Error al actualizar perfil:", error);
+      res.status(500).send("Error al actualizar perfil");
     }
   },
 };

@@ -26,17 +26,35 @@
   <!-- Tab Content -->
   <div class="tab-content" id="accountTabContent">
     <!-- Configuración -->
+    <!-- Configuración -->
     <div class="tab-pane fade show active" id="config" role="tabpanel">
       <div class="account-profile text-center mb-4">
         <img src="<%= user.image || '/assets_front/images/default-user.jpg' %>" alt="Foto de perfil" width="120" />
       </div>
-      <div class="account-box">
-        <img src="<%= user.image %>" alt="Foto de perfil" width="120" />
-        <p><strong>Nombre:</strong> </strong> <%= user.name %> <%= user.lastname || '' %></p>
-        <p><strong>Email:</strong> <%= user.email %></p>
-        <p><strong>Teléfono:</strong> +595 981 234 567</p>
-        <button class="btn btn-account">Editar perfil</button>
-      </div>
+      <form action="/users/account" method="POST" enctype="multipart/form-data" class="account-box">
+        <input type="hidden" name="oldImage" value="<%= user.image %>" />
+
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" value="<%= user.name %>" required />
+
+        <label for="lastname">Apellido</label>
+        <input type="text" name="lastname" id="lastname" value="<%= user.lastname %>" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="<%= user.email %>" required />
+
+        <label for="image">Actualizar imagen de perfil</label>
+        <input type="file" name="image" id="image" accept="image/*" />
+
+        <label for="password">Nueva contraseña</label>
+        <input type="password" name="password" id="password" placeholder="Dejar vacío para no cambiar" />
+
+        <label for="confirmPassword">Confirmar nueva contraseña</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmar contraseña" />
+
+
+        <button type="submit" class="btn btn-account">Guardar cambios</button>
+      </form>
     </div>
 
     <!-- Pedidos -->
