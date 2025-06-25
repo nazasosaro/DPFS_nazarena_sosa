@@ -2,12 +2,18 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
 const upload = require("../middlewares/uploadProductImage");
+const productValidator = require("../middlewares/productValidator");
 
 router.get("/", productController.products);
 router.get("/details/:id", productController.details);
 
 router.get("/create", productController.create); // muedtra el formulario
-router.post("/", upload.single("image"), productController.store) // guardado del producto
+router.post(
+  "/",
+  productValidator,
+  upload.single("image"),
+  productController.store
+); // guardado del producto
 
 router.get("/edit/:id", productController.edit);
 router.put("/:id", upload.single("image"), productController.update);

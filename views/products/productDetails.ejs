@@ -19,7 +19,9 @@
         </p>
 
         <div class="product-pricing">
+          <% if (product.promotionalPrice > 0) { %>
           <span class="product-price-offer">Gs. <%= product.promotionalPrice %></span>
+          <% } %>
           <span class="product-price-old">Gs. <%= product.price %></span>
         </div>
 

@@ -1,5 +1,6 @@
 const db = require("../database/models"); // importacion de Sequelize
 const { Op } = require("sequelize");
+const { validationResult } = require("express-validator");
 
 module.exports = {
   // listar todos los productos
@@ -69,6 +70,22 @@ module.exports = {
 
   // guardar producto nuevo (POST)
   store: async (req, res) => {
+    const errors = validationResult(req);
+    const [categories, colors] = await Promise.all([
+      db.ProductCategory.findAll(),
+      db.ProductColor.findAll(),
+    ]);
+
+    if (!errors.isEmpty()) {
+      return res.render("products/createProduct", {
+        title: "Crear producto",
+        categories,
+        colors,
+        errors: errors.array(),
+        old: req.body,
+      });
+    }
+    
     try {
       const {
         name,
