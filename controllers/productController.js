@@ -85,7 +85,7 @@ module.exports = {
         old: req.body,
       });
     }
-    
+
     try {
       const {
         name,
@@ -146,6 +146,24 @@ module.exports = {
 
   // actualizar producto (POST/PUT)
   update: async (req, res) => {
+    const errors = validationResult(req);
+    const [categories, colors] = await Promise.all([
+      db.ProductCategory.findAll(),
+      db.ProductColor.findAll(),
+    ]);
+
+    if (!errors.isEmpty()) {
+      const product = await db.Product.findByPk(req.params.id);
+      return res.render("products/editProduct", {
+        title: "Editar Producto",
+        product,
+        categories,
+        colors,
+        errors: errors.array(),
+        old: req.body,
+      });
+    }
+    
     try {
       const allowedStatuses = ["active", "inactive", "deleted"];
       const newStatus = req.body.status?.trim().toLowerCase();

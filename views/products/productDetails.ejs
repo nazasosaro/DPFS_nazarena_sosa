@@ -25,18 +25,16 @@
           <span class="product-price-old">Gs. <%= product.price %></span>
         </div>
 
+        <% if (product.color && product.color.name !== 'no definido') { %>
         <div class="color-options">
           <p>Colores disponibles:</p>
 
-          <% if (product.color) { %>
           <input type="radio" id="<%= product.color.name %>" name="color" value="<%= product.color.name %>" hidden />
           <label for="<%= product.color.name %>" class="color-option">
             <%= product.color.name %>
           </label>
-          <% } else { %>
-          <span class="text-muted">Sin color disponible</span>
-          <% } %>
         </div>
+        <% } %>
 
         <div class="product-quantity">
           <label for="quantity">Cantidad:</label>
