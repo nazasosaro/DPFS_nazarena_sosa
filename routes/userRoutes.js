@@ -4,9 +4,10 @@ const userController = require("../controllers/userController");
 const uploadUserImage = require("../middlewares/uploadUserImage");
 const authMiddleware = require("../middlewares/authMiddleware"); 
 const userRegisterValidator = require("../middlewares/userRegisterValidator");
+const userLoginValidator = require("../middlewares/userLoginValidator");
 
 router.get("/login", userController.loginForm);
-router.post("/login", userController.loginProcess);
+router.post("/login", userLoginValidator, userController.loginProcess);
 router.get("/logout", userController.logout);
 
 router.get("/register", userController.registerForm);

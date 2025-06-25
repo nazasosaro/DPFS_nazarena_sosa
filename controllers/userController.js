@@ -22,6 +22,18 @@ module.exports = {
 
   // procesar login
   loginProcess: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // Guardamos los errores y los datos del formulario
+      req.session.loginError = errors
+        .array()
+        .map((e) => e.msg)
+        .join(" | ");
+      req.session.oldInput = req.body;
+      return res.redirect("/users/login");
+    }
+
     try {
       const { email, password, rememberUser } = req.body;
 
