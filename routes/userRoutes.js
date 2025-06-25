@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 const uploadUserImage = require("../middlewares/uploadUserImage");
 const authMiddleware = require("../middlewares/authMiddleware"); 
+const userRegisterValidator = require("../middlewares/userRegisterValidator");
 
 router.get("/login", userController.loginForm);
 router.post("/login", userController.loginProcess);
@@ -11,6 +12,7 @@ router.get("/logout", userController.logout);
 router.get("/register", userController.registerForm);
 router.post(
   "/register",
+  userRegisterValidator,
   uploadUserImage.single("image"),
   userController.registerProcess
 );

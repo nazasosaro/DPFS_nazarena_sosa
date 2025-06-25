@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const path = require("path");
 const db = require("../database/models"); // importacion de Sequelize
 const { Op } = require("sequelize");
+const { validationResult } = require("express-validator");
 
 module.exports = {
   // mostrar formulario de login
@@ -85,18 +86,37 @@ module.exports = {
 
   // procesar registro
   registerProcess: async (req, res) => {
+    const errors = validationResult(req);
+  
+    if (!errors.isEmpty()) {
+      console.log("Errores de validación:", errors.array());
+
+      return res.render("users/register", {
+        title: "Registro",
+        categories: await db.UserCategory.findAll(),
+        errors: errors.array(),
+        old: req.body,
+      });
+    }
+  
     try {
       const { name, lastname, email, password } = req.body;
-
+  
       const existingUser = await db.User.findOne({
         where: { email: email.trim().toLowerCase() },
       });
-
+  
       if (existingUser) {
-        return res.status(400).send("Este email ya está registrado.");
+        const categories = await db.UserCategory.findAll();
+        return res.render("users/register", {
+          title: "Registro",
+          categories,
+          errors: [{ msg: "Este email ya está registrado." }],
+          old: req.body,
+        });
       }
-
-      const newUser = await db.User.create({
+  
+      await db.User.create({
         name: name.trim(),
         lastname: lastname.trim(),
         email: email.trim().toLowerCase(),
@@ -106,7 +126,7 @@ module.exports = {
           : "/assets_front/images/default-user.jpg",
         userCategoryId: 3, // cliente
       });
-
+  
       res.redirect("/users/login");
     } catch (error) {
       console.error("Error al registrar usuario:", error);
