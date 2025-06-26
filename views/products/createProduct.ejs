@@ -16,46 +16,70 @@
     <form action="/products" method="POST" enctype="multipart/form-data">
 
       <!-- Nombre -->
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name" placeholder="Nombre del producto" required />
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" placeholder="Nombre del producto" required />
+        <span class="error-message" id="nameError"></span>
+      </div>
 
       <!-- Descripción -->
-      <label for="description">Descripción:</label>
-      <textarea id="description" name="description" placeholder="Descripción del producto" required></textarea>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" placeholder="Descripción del producto" required></textarea>
+        <span class="error-message" id="descriptionError"></span>
+      </div>
 
       <!-- Imagen -->
-      <label for="image">Imagen del producto:</label>
-      <input type="file" id="image" name="image" accept="image/*" />
+      <div class="form-group">
+        <label for="image">Imagen del producto:</label>
+        <input type="file" id="image" name="image" accept="image/*" />
+        <span class="error-message" id="imageError"></span>
+      </div>
 
       <!-- Categoría -->
-      <label for="category">Categoría:</label>
-      <select id="category" name="category" required>
-        <option value="" disabled selected>Seleccione una categoría</option>
-        <% categories.forEach(cat => { %>
-        <option value="<%= cat.productCategoryId %>"><%= cat.name %></option>
-        <% }) %>
-      </select>
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Seleccione una categoría</option>
+          <% categories.forEach(cat => { %>
+          <option value="<%= cat.productCategoryId %>"><%= cat.name %></option>
+          <% }) %>
+        </select>
+        <span class="error-message" id="categoryError"></span>
+      </div>
 
       <!-- Color -->
-      <label for="colors">Color:</label>
-      <select id="colors" name="colors" required>
-        <option value="" disabled selected>Seleccione un color</option>
-        <% colors.forEach(color => { %>
-        <option value="<%= color.productColorId %>"><%= color.name %></option>
-        <% }) %>
-      </select>
+      <div class="form-group">
+        <label for="colors">Color:</label>
+        <select id="colors" name="colors" required>
+          <option value="" disabled selected>Seleccione un color</option>
+          <% colors.forEach(color => { %>
+          <option value="<%= color.productColorId %>"><%= color.name %></option>
+          <% }) %>
+        </select>
+        <span class="error-message" id="colorsError"></span>
+      </div>
 
       <!-- Precio -->
-      <label for="price">Precio:</label>
-      <input type="number" step="0.01" name="price" placeholder="Precio" required />
+      <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" step="0.01" name="price" id="price" placeholder="Precio" required />
+        <span class="error-message" id="priceError"></span>
+      </div>
 
       <!-- Precio promocional -->
-      <label for="promotionalPrice">Precio promocional:</label>
-      <input type="number" step="0.01" name="promotionalPrice" placeholder="Precio promocional" />
+      <div class="form-group">
+        <label for="promotionalPrice">Precio promocional:</label>
+        <input type="number" step="0.01" name="promotionalPrice" id="promotionalPrice" placeholder="Precio promocional" />
+        <span class="error-message" id="promotionalPriceError"></span>
+      </div>
 
       <!-- Stock -->
-      <label for="stock">Stock disponible:</label>
-      <input type="number" name="stock" placeholder="Stock disponible" required />
+      <div class="form-group">
+        <label for="stock">Stock disponible:</label>
+        <input type="number" name="stock" id="stock" placeholder="Stock disponible" required />
+        <span class="error-message" id="stockError"></span>
+      </div>
 
       <button type="submit">Crear producto</button>
     </form>
@@ -63,3 +87,6 @@
 </main>
 
 <%- include('../partials/footer') %>
+
+<script src="https://cdn.jsdelivr.net/npm/validator@13.9.0/validator.min.js"></script>
+<script src="/assets_front/js/validateCreateProduct.js"></script>
